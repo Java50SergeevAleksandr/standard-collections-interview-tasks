@@ -1,38 +1,52 @@
 package telran.interviews;
 
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 //Requirement: all methods must have complexity O[1]
 public class MyStack<T> {
-	// TODO insert the required fields
+	private LinkedList<T> listStack;
+	private LinkedList<T> maxValues;
+	private Comparator<T> comp;
+
 	public MyStack(Comparator<T> comp) {
-		// TODO comparator for comparing two objects of a class T
+		listStack = new LinkedList<>();
+		maxValues = new LinkedList<>();
+		this.comp = comp;
 	}
 
+	@SuppressWarnings("unchecked")
 	public MyStack() {
-		// TODO for comparing in the natural order (Comparable)
+		this((Comparator<T>) Comparator.naturalOrder());
 	}
 
 	public void push(T element) {
-		// TODO adds element to the stack's top (last element of the stack)
+		listStack.push(element);
+		
+		if (maxValues.isEmpty() || comp.compare(element, maxValues.peek()) >= 0) {
+			maxValues.push(element);
+		}
 	}
 
 	public T pop() {
-		// TODO removes the stack's top element and returns it out
-		// In the case no elements exist in the stack the method throws exception
-		// NoSuchElementException
-		return null;
+		// Throws NoSuchElementException
+		T element = listStack.pop();
+		
+		if (comp.compare(element, maxValues.peek()) == 0) {
+			maxValues.pop();
+		}
+		return element;
 	}
 
 	public boolean isEmpty() {
-		// TODO returns true if the stack is empty otherwise false
-		return false;
+		return listStack.isEmpty();
 	}
 
 	public T getMax() {
-		// TODO returns maximal element from the stack
-		// In the case no elements exist in the stack the method throws exception
-		// NoSuchElementException
-		return null;
+		// Throws NoSuchElementException
+		return maxValues.getFirst();
 	}
 }
