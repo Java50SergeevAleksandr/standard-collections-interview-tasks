@@ -31,7 +31,7 @@ class ConnectionsPoolTest {
 		assertFalse(testPool.addConnection(con2));
 		assertEquals(con1, testPool.getConnection(1));
 		assertTrue(testPool.addConnection(con3));
-		assertEquals(null, testPool.getConnection(2));
+		assertNull(testPool.getConnection(2));
 	}
 
 }

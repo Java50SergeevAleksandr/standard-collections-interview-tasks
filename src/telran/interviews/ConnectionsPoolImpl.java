@@ -19,13 +19,13 @@ public class ConnectionsPoolImpl implements ConnectionsPool {
 
 	@Override
 	public boolean addConnection(Connection connection) {
-		return pool.put(connection.id, connection) == null ? true : false;
-
+		return pool.putIfAbsent(connection.id, connection) == null ? true : false;
 	}
 
 	@Override
 	public Connection getConnection(int id) {
-		return pool.getOrDefault(id, null);
+		return pool.get(id);
+		
 	}
 
 }

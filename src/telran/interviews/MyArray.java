@@ -1,5 +1,7 @@
 package telran.interviews;
 
+import java.util.*;
+
 /**
  * All methods of the class should have complexity O[1]
  * 
@@ -8,9 +10,14 @@ package telran.interviews;
  * @param <T>
  */
 public class MyArray<T> {
-	// TODO
+
+	Map<Integer, T> map;
+	T allVal = null;
+	int size;
+
 	public MyArray(int size) {
-		// TODO
+		this.size = size;
+		map = new HashMap<>(size);
 	}
 
 	/**
@@ -19,8 +26,8 @@ public class MyArray<T> {
 	 * @param value
 	 */
 	public void setAll(T value) {
-
-		// TODO
+		map = new HashMap<>(size);
+		allVal = value;
 	}
 
 	/**
@@ -29,8 +36,12 @@ public class MyArray<T> {
 	 * @return value at given index or null if index is wrong
 	 */
 	public T get(int index) {
-		// TODO
-		return null;
+		T res = null;
+		if (index < size && index > -1) {
+			res = map.getOrDefault(index, allVal);
+		}
+
+		return res;
 	}
 
 	/**
@@ -41,6 +52,9 @@ public class MyArray<T> {
 	 * @param value
 	 */
 	public void set(int index, T value) {
-		// TODO
+		if (index >= size || index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		map.put(index, value);
 	}
 }
