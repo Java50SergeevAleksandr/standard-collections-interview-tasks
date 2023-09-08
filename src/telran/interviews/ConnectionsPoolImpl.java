@@ -13,7 +13,7 @@ public class ConnectionsPoolImpl implements ConnectionsPool {
 	LinkedHashMap<Integer, Connection> pool = new LinkedHashMap<>(poolLimit, 0.75f, true) {
 		@Override
 		protected boolean removeEldestEntry(Map.Entry<Integer, Connection> entry) {
-			return size() > poolLimit;
+			return size() > poolLimit;		
 		}
 	};
 

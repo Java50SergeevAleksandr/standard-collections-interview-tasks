@@ -22,7 +22,8 @@ class AnagramTests {
 		assertFalse(isAnagram(word, ""));
 		assertFalse(isAnagram(word, "yellob"));
 		assertFalse(isAnagram(word, "yello"));
-		assertFalse(isAnagram(word, "yelllo"));
+		assertFalse(isAnagram(word, "cyello"));
+		assertFalse(isAnagram(word,"yelllo"));
 
 	}
 
