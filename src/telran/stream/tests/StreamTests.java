@@ -84,7 +84,11 @@ class StreamTests {
 	}
 
 	@Test
-	void StreamTasksTest() {		
-		StreamTasks.printDigitStatistics();	
+	void StreamTasksTest() {
+		StreamTasks.printDigitStatistics();
+		StreamTasks.displayDigitStatisticsFastest();
+		StreamTasks.displayDigitStatisticsSuperFastest();
+		StreamTasks.combinedSolution();
+
 	}
 }
